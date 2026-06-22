@@ -3,6 +3,17 @@ on:
   push:
     branches: [main]
 
+  workflow_dispatch: # 👈 Isse GitHub UI me manual option aayega
+    inputs:
+      terraform_action:
+        description: 'Select the action you want to perform'
+        required: true
+        default: 'apply'
+        type: choice
+        options:
+          - apply
+          - destroy
+
 permissions:
   id-token: write
   contents: read
@@ -38,5 +49,8 @@ jobs:
       - name: Terraform Plan
         run: terraform plan -input=false
 
-      - name: Terraform Apply
-        run: terraform apply -auto-approve -input=false
+      # - name: Terraform Apply
+      #   run: terraform apply -auto-approve -input=false
+
+      - name: Terraform Run Action
+        run: terraform ${{ github.event.inputs.terraform_action }} -auto-approve -input=false
