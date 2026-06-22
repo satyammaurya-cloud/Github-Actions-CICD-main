@@ -20,3 +20,7 @@ jobs:
           aws-region: ap-south-1 
           role-to-assume: arn:aws:iam::299295683811:role/github-action-role
           # role-to-assume: ${{ secrets.AWS_IAM_ROLE }}    -> Role can added into the variable
+
+# Optional = aws sts get-caller-identity is the AWS CLI equivalent of asking, "Who am I right now?
+      - name: Test AWS Credentials
+        run: aws sts get-caller-identity
