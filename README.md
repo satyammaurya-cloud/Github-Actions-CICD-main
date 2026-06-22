@@ -69,8 +69,8 @@ jobs:
       - name: Configure AWS Credentials using OIDC
         uses: aws-actions/configure-aws-credentials@v4.1.0
         with:
-          aws-region: ap-south-1 
           role-to-assume: arn:aws:iam::299295683811:role/github-action-role
+          aws-region: ap-south-1 
           # Alternative: role-to-assume: ${{ secrets.AWS_IAM_ROLE }} -> Role can be added as a GitHub secret/variable
 
       # Sanity check to verify identity context ("Who am I right now?")
@@ -81,6 +81,3 @@ jobs:
 ## 💻 OIDC Flow Diagram
 
 <img width="1487" height="713" alt="OIDC-AWS-Account-Setup" src="https://github.com/user-attachments/assets/f632c5df-3f87-42ba-8dff-f5296f983ad3" />
-
-
-        
