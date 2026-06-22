@@ -2,6 +2,8 @@
 
 This guide contains the configurations required to establish a secure, keyless OpenID Connect (OIDC) handshake between GitHub Actions and global AWS regions (e.g., `ap-south-1`). This setup eliminates the need for long-lived AWS Access Keys.
 
+*Please refer to the official repo for more knowledge*: [OIDC in AWS - GitHub Actions Documentation](https://docs.github.com/en/actions/how-tos/secure-your-work/security-harden-deployments/oidc-in-aws?versionId=free-pro-team%40latest&productId=actions&restPage=concepts%2Csecurity%2Copenid-connect#configuring-the-role-and-trust-policy)
+
 ---
 
 ## 🛠️ Part 1: AWS IAM Configuration
