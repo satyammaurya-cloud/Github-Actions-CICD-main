@@ -53,4 +53,9 @@ jobs:
       #   run: terraform apply -auto-approve -input=false
 
       - name: Terraform Run Action
-        run: terraform ${{ github.event.inputs.terraform_action }} -auto-approve -input=false
+        run: |
+          ACTION="${{ github.event.inputs.terraform_action }}"
+          ACTION=${ACTION:-apply} # 👈 Agar push event hai, toh automatic 'apply' chalega
+          
+          echo "Executing Terraform $ACTION..."
+          terraform $ACTION -auto-approve -input=false
