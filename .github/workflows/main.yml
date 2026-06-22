@@ -47,7 +47,17 @@ jobs:
         run: terraform init
 
       - name: Terraform Plan
-        run: terraform plan -input=false
+        run: |
+          ACTION="${{ github.event.inputs.terraform_action }}"
+          ACTION=${ACTION:-apply} # 👈 Agar push event hai (empty input), toh automatically 'apply' set ho jayega
+          
+          if [ "$ACTION" = "destroy" ]; then
+            echo "Running Destroy Plan..."
+            terraform plan -destroy -input=false
+          else
+            echo "Running Standard Plan..."
+            terraform plan -input=false
+          fi
 
       # - name: Terraform Apply
       #   run: terraform apply -auto-approve -input=false
