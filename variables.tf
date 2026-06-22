@@ -1,0 +1,7 @@
+variable "vpcs" {
+
+}
+
+variable "subnets" {
+
+}

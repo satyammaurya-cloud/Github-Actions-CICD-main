@@ -1,14 +1,16 @@
-resource "aws_vpc" "vpc1" {
-  cidr_block = "10.0.0.0/16"
-  tags = {
-    Name = "hcl-vpc-1"
-  }
+resource "aws_vpc" "vpcss" {
+
+  for_each = var.vpcs
+
+  cidr_block = each.value.cidr_block
+  tags       = each.value.tags
 }
 
-resource "aws_subnet" "subnet1" {
-  vpc_id     = aws_vpc.vpc1.id
-  cidr_block = "10.0.0.0/24"
-  tags = {
-    Name = "mysubnet"
-  }
+resource "aws_subnet" "subnetss" {
+
+  for_each = var.subnets
+
+  vpc_id     = aws_vpc.vpcss[each.value.vpc_id].id
+  cidr_block = each.value.cidr_block
+  tags       = each.value.tags
 }
