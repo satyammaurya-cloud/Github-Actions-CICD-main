@@ -76,6 +76,9 @@ jobs:
         run: aws sts get-caller-identity
 ```
 ---
+## 💻 OIDC Flow Diagram
+
+<img width="1487" height="713" alt="OIDC-AWS-Account-Setup" src="https://github.com/user-attachments/assets/f632c5df-3f87-42ba-8dff-f5296f983ad3" />
 
 
         
